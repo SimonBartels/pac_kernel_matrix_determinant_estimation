@@ -1,0 +1,8 @@
+numpy=1.19.4
+scipy=1.5.2
+mlflow=1.12.1
+setuptools=52.0.0
+pandas=1.1.4
+matplotlib=3.3.2
+tikzplotlib=0.9.8
+

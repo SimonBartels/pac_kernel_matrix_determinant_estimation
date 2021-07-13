@@ -1,0 +1,90 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figheight,
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figwidth,
+x grid style={white!69.0196078431373!black},
+xlabel={\labelx{}},
+xmin=0.85, xmax=4.15,
+xtick style={color=black},
+xtick={1,2,3,4},
+xticklabel style = {align=center},
+xticklabels={
+  \expconfig{\PM{}}{RBF}{-1.0},
+  \expconfig{\PM{}}{RBF}{0.0},
+  \expconfig{\PM{}}{RBF}{1.0},
+  \expconfig{\PM{}}{RBF}{2.0}
+},
+y grid style={white!69.0196078431373!black},
+ylabel={\labely{}},
+ymajorticks={\ticklabelsy},
+xmajorticks={\ticklabelsx},
+ymin=0.001, ymax=1,
+ymode=log,
+ytick style={color=black}
+]
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.211846217513084
+1 0.209193617105484
+1 0.213635668158531
+1 0.210031628608704
+1 0.213208720088005
+1 0.209016188979149
+1 0.209807366132736
+1 0.208660438656807
+1 0.209156915545464
+1 0.214391946792603
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+2 0.382023751735687
+2 0.384545147418976
+2 0.383256614208221
+2 0.380739599466324
+2 0.38321653008461
+2 0.38897779583931
+2 0.38220751285553
+2 0.375623553991318
+2 0.381247937679291
+2 0.386275887489319
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+3 0.389892607927322
+3 0.391238898038864
+3 0.389886200428009
+3 0.391806781291962
+3 0.391633123159409
+3 0.388739466667175
+3 0.392170667648315
+3 0.390772461891174
+3 0.389771908521652
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+4 0.227288708090782
+4 0.223313689231873
+4 0.228281602263451
+4 0.229067593812943
+4 0.22713328897953
+4 0.226515978574753
+4 0.227318540215492
+4 0.225009560585022
+4 0.224588617682457
+4 0.224767461419106
+};
+\draw (axis cs:1,0.005) node[
+  scale=0.5,
+  anchor=south west,
+  text=black,
+  rotate=0.0
+]{\PM{}};
+\clearlegend{};
+\end{axis}
+
+\end{tikzpicture}

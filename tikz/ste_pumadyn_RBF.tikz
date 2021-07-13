@@ -1,0 +1,89 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figheight,
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figwidth,
+x grid style={white!69.0196078431373!black},
+xlabel={\labelx{}},
+xmin=0.85, xmax=4.15,
+xtick style={color=black},
+xtick={1,2,3,4},
+xticklabel style = {align=center},
+xticklabels={
+  \expconfig{\PUMADYN{}}{RBF}{-1.0},
+  \expconfig{\PUMADYN{}}{RBF}{0.0},
+  \expconfig{\PUMADYN{}}{RBF}{1.0},
+  \expconfig{\PUMADYN{}}{RBF}{2.0}
+},
+y grid style={white!69.0196078431373!black},
+ylabel={\labely{}},
+ymajorticks={\ticklabelsy},
+xmajorticks={\ticklabelsx},
+ymin=0.001, ymax=1,
+ymode=log,
+ytick style={color=black}
+]
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.273080825805664
+1 0.174569994211197
+1 0.939232707023621
+1 1.38716077804565
+1 1.1100869178772
+1 0.178763970732689
+1 0.439548492431641
+1 2.13510799407959
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+2 1.69501399993896
+2 0.627817034721375
+2 0.00677124364301562
+2 1.14860892295837
+2 0.934536099433899
+2 0.915628433227539
+2 0.725430548191071
+2 0.0697151497006416
+2 0.0497693680226803
+2 1.72322869300842
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+3 0.0221507493406534
+3 0.0213219132274389
+3 0.0401587560772896
+3 0.0180989988148212
+3 0.0180056672543287
+3 0.00851284433156252
+3 0.00137793377507478
+3 0.0155825577676296
+3 0.0084433238953352
+3 0.0121742486953735
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+4 0.03819639980793
+4 0.0345723554491997
+4 0.0399188101291656
+4 0.0373178273439407
+4 0.0385367572307587
+4 0.0391964986920357
+4 0.0361147932708263
+4 0.0384597629308701
+4 0.0360519215464592
+4 0.034782275557518
+};
+\draw (axis cs:1,0.005) node[
+  scale=0.5,
+  anchor=south west,
+  text=black,
+  rotate=0.0
+]{\PUMADYN{}};
+\clearlegend{};
+\end{axis}
+
+\end{tikzpicture}

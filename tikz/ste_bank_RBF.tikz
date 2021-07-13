@@ -1,0 +1,91 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figheight,
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figwidth,
+x grid style={white!69.0196078431373!black},
+xlabel={\labelx{}},
+xmin=0.85, xmax=4.15,
+xtick style={color=black},
+xtick={1,2,3,4},
+xticklabel style = {align=center},
+xticklabels={
+  \expconfig{\BANK{}}{RBF}{-1.0},
+  \expconfig{\BANK{}}{RBF}{0.0},
+  \expconfig{\BANK{}}{RBF}{1.0},
+  \expconfig{\BANK{}}{RBF}{2.0}
+},
+y grid style={white!69.0196078431373!black},
+ylabel={\labely{}},
+ymajorticks={\ticklabelsy},
+xmajorticks={\ticklabelsx},
+ymin=0.001, ymax=1,
+ymode=log,
+ytick style={color=black}
+]
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.0379014424979687
+1 0.0307994037866592
+1 0.0500379428267479
+1 0.0249487925320864
+1 0.0421974286437035
+1 0.0366903580725193
+1 0.022149508818984
+1 0.0242462996393442
+1 0.0360686592757702
+1 0.0413644127547741
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+2 0.279309630393982
+2 0.275960206985474
+2 0.280145108699799
+2 0.271197080612183
+2 0.282322108745575
+2 0.278679013252258
+2 0.279887706041336
+2 0.281076192855835
+2 0.267086058855057
+2 0.278071522712708
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+3 0.50517749786377
+3 0.500580966472626
+3 0.507146656513214
+3 0.515999317169189
+3 0.5161412358284
+3 0.507192015647888
+3 0.499237447977066
+3 0.514704644680023
+3 0.516450464725494
+3 0.495748847723007
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+4 0.383075296878815
+4 0.383705645799637
+4 0.387111663818359
+4 0.38300895690918
+4 0.385446697473526
+4 0.382672369480133
+4 0.381357222795486
+4 0.384776592254639
+4 0.385234922170639
+4 0.381842195987701
+};
+\draw (axis cs:1,0.005) node[
+  scale=0.5,
+  anchor=south west,
+  text=black,
+  rotate=0.0
+]{\BANK{}};
+\clearlegend{};
+\end{axis}
+
+\end{tikzpicture}

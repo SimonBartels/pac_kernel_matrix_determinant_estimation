@@ -1,0 +1,70 @@
+/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/simon/Desktop/workspace/pac_kernel_matrix_determinants/openblas
+-- The C compiler identification is GNU 9.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc - works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Warning at CMakeLists.txt:64 (message):
+  CMake support is experimental.  It does not yet support all build options
+  and may not produce the same Makefiles that OpenBLAS ships with.
+
+
+-- GEMM multithread threshold set to 4.
+-- Multi-threading enabled with 8 threads.
+-- The Fortran compiler identification is GNU 9.3.0
+-- Check for working Fortran compiler: /usr/bin/gfortran
+-- Check for working Fortran compiler: /usr/bin/gfortran - works
+-- Detecting Fortran compiler ABI info
+-- Detecting Fortran compiler ABI info - done
+-- Checking whether /usr/bin/gfortran supports Fortran 90
+-- Checking whether /usr/bin/gfortran supports Fortran 90 - yes
+-- Running getarch
+-- GETARCH results:
+CORE=HASWELL
+LIBCORE=haswell
+NUM_CORES=8
+HAVE_MMX=1
+HAVE_SSE=1
+HAVE_SSE2=1
+HAVE_SSE3=1
+HAVE_SSSE3=1
+HAVE_SSE4_1=1
+HAVE_SSE4_2=1
+HAVE_AVX=1
+HAVE_AVX2=1
+HAVE_FMA3=1
+MAKE += -j 8
+
+-- Compiling a 64-bit binary.
+-- Building Single Precision
+-- Building Double Precision
+-- Building Complex Precision
+-- Building Double Complex Precision
+-- Reading vars from /home/simon/Desktop/workspace/pac_kernel_matrix_determinants/openblas/kernel/x86_64/KERNEL...
+-- Reading vars from /home/simon/Desktop/workspace/pac_kernel_matrix_determinants/openblas/kernel/x86_64/KERNEL.HASWELL...
+-- Building deprecated routines
+-- Building Single Precision
+-- Building Double Precision
+-- Building Complex Precision
+-- Building Double Complex Precision
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Generating openblas_config.h in include/openblas
+-- Generating f77blas.h in include/openblas
+-- Generating cblas.h in include/openblas
+-- Copying LAPACKE header files to include/openblas
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/simon/Desktop/workspace/pac_kernel_matrix_determinants/openblas/cmake-build-debug

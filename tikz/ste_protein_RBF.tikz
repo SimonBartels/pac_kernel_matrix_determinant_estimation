@@ -1,0 +1,90 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figheight,
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figwidth,
+x grid style={white!69.0196078431373!black},
+xlabel={\labelx{}},
+xmin=0.85, xmax=4.15,
+xtick style={color=black},
+xtick={1,2,3,4},
+xticklabel style = {align=center},
+xticklabels={
+  \expconfig{\PROTEIN{}}{RBF}{-1.0},
+  \expconfig{\PROTEIN{}}{RBF}{0.0},
+  \expconfig{\PROTEIN{}}{RBF}{1.0},
+  \expconfig{\PROTEIN{}}{RBF}{2.0}
+},
+y grid style={white!69.0196078431373!black},
+ylabel={\labely{}},
+ymajorticks={\ticklabelsy},
+xmajorticks={\ticklabelsx},
+ymin=0.001, ymax=1,
+ymode=log,
+ytick style={color=black}
+]
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.452524930238724
+1 0.454879909753799
+1 0.451595515012741
+1 0.450242459774017
+1 0.447290897369385
+1 0.456254690885544
+1 0.454752683639526
+1 0.44531524181366
+1 0.45533162355423
+1 0.449044764041901
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+2 0.449298739433289
+2 0.446052700281143
+2 0.446909219026566
+2 0.443532019853592
+2 0.437607526779175
+2 0.447105169296265
+2 0.437165349721909
+2 0.448262870311737
+2 0.446580708026886
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+3 0.149062767624855
+3 0.150808081030846
+3 0.14707113802433
+3 0.144847527146339
+3 0.139437198638916
+3 0.144782170653343
+3 0.13154698908329
+3 0.140378460288048
+3 0.15068219602108
+3 0.131946727633476
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+4 0.00255700340494514
+4 0.00249310419894755
+4 0.00311965122818947
+4 0.00227545527741313
+4 0.00324211199767888
+4 0.00186136655975133
+4 0.00256174965761602
+4 0.00228416104800999
+4 0.00253966730087996
+4 0.00250245188362896
+};
+\draw (axis cs:1,0.005) node[
+  scale=0.5,
+  anchor=south west,
+  text=black,
+  rotate=0.0
+]{\PROTEIN{}};
+\clearlegend{};
+\end{axis}
+
+\end{tikzpicture}

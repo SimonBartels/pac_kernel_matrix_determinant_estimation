@@ -1,0 +1,348 @@
+% !TeX spellcheck = en_US
+\documentclass[twoside,11pt]{article}
+
+% Any additional packages needed should be included after jmlr2e.
+% Note that jmlr2e.sty includes epsfig, amssymb, natbib and graphicx,
+% and defines many common macros, such as 'proof' and 'example'.
+%
+% It also sets the bibliographystyle to plainnat; for more information on
+% natbib citation styles, see the natbib documentation, a copy of which
+% is archived at http://www.jmlr.org/format/natbib.pdf
+
+\usepackage{jmlr2e}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2020} with \usepackage[nohyperref]{icml2020} above.
+\usepackage{hyperref}
+
+\usepackage{placeins} % for the command \FloatBarrier
+%\usepackage{flafter} % don't let figures appear before they are defined
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Heading arguments are {volume}{year}{pages}{date submitted}{date published}{paper id}{author-full-names}
+
+\jmlrheading{~}{~}{~}{10th July 2021}{~}{~}{~}
+
+% Short headings should be running head and authors last names
+
+\ShortHeadings{Kernel-Matrix Determinant Estimates from stopped Cholesky Decomposition}{Bartels, Boomsma, Frellsen and Garreau}
+\firstpageno{1}
+
+\include{preamble}
+\usepackage{xr}  % we require cross-referencing for the tikz pictures to refer to the different legends
+
+\begin{document}
+\tikzset{external/force remake=false}% % the [mode=list and make] option creates example_paper.makefile, to create the figures call: 
+% make -B -j #processors -f example_paper.makefile
+%
+% include legends for later reference, colors need to be defined here
+\setlength{\figwidth}{.5\textwidth}%
+\setlength{\figheight}{.25\textheight}%
+\tikzexternaldisable%
+{\hspace{-30cm}\smash{\input{../tikz/legend.tikz}}}%
+{\hspace{-30cm}\smash{\input{../tikz/bound_legend.tikz}}}%
+\tikzexternalenable%
+\definecolor{color1}{rgb}{1,0.6,0.2}%
+\definecolor{color0}{rgb}{0,0.4717,0.4604}%
+%
+
+
+\newcommand{\resultfigheight}{.16\textheight}%
+\newcommand{\resultfigwidth}{.5\textwidth}%
+\begin{figure}
+	{\centering\ref{leg:bound}\\}%
+	\setlength{\figwidth}{.5\textwidth}%
+	\setlength{\figheight}{\figwidth}%
+	\setlength{\tabcolsep}{-3pt}%
+	\begin{tabular}[t]{lr}
+		\renewcommand{\labelx}{processed datapoints}%
+		\renewcommand{\labely}{relative error bound}%
+		\renewcommand{\ticklabelsy}{true}%
+		\hidelegend{}%
+		% \runinfo: dataset, D, N, k, \theta, \ell, \delta 
+		\renewcommand{\runinfo}[7]{\textbf{#1} (D=#2)}%, $\ell=#6$, $\delta=#7$)}%
+		\adjustbox{valign=t}{\input{../tikz/RBF/tamilnadu_electricity/bound_-1.0.tikz}}%
+		&
+		\renewcommand{\runinfo}[7]{}%
+		\renewcommand{\labelx}{$\frac{t}{\operatorname{mean}(t_{\text{default}})}$}%{$\metric$}%
+		\renewcommand{\labely}{~}%
+		\adjustbox{valign=t}{\input{../tikz/RBF/tamilnadu_electricity/inverse_plot_-1.0.tikz}}%
+	\end{tabular}
+\end{figure}
+\begin{figure}
+	{\centering\ref{leg:bound}\\}%
+	\setlength{\figwidth}{.5\textwidth}%
+	\setlength{\figheight}{\figwidth}%
+	\setlength{\tabcolsep}{-3pt}%
+	\begin{tabular}[t]{lr}
+		\renewcommand{\labelx}{processed datapoints}%
+		\renewcommand{\labely}{relative error bound}%
+		\renewcommand{\ticklabelsy}{true}%
+		\hidelegend{}%
+		% \runinfo: dataset, D, N, k, \theta, \ell, \delta 
+		\renewcommand{\runinfo}[7]{\textbf{#1} (D=#2)}%, $\ell=#6$, $\delta=#7$)}%
+		\adjustbox{valign=t}{\input{../tikz/OU/bank/bound_1.0.tikz}}%  % OU, late convergence, but close bounds	
+		&
+		\renewcommand{\runinfo}[7]{}%
+		\renewcommand{\labelx}{$\frac{t}{\operatorname{mean}(t_{\text{default}})}$}%{$\metric$}%
+		\renewcommand{\labely}{~}%
+		\adjustbox{valign=t}{\input{../tikz/OU/bank/inverse_plot_1.0.tikz}}%
+	\end{tabular}
+\end{figure}
+
+\renewcommand{\ticklabelsy}{true}%
+\renewcommand{\labelx}{$\substack{d\\r}$}%
+\renewcommand{\labely}{$\metric$}%
+%
+\setlength{\figwidth}{.48\textwidth}%
+\setlength{\figheight}{.16\textheight}%
+\begin{figure}
+{\centering\ref{leg:performance}\\}
+\setlength{\tabcolsep}{-4pt}
+\begin{tabular}{rr}
+\multicolumn{1}{c}{RBF \cref{eq:kernel_rbf}}&\multicolumn{1}{c}{OU \cref{eq:kernel_ou}}\\
+\renewcommand{\labely}{\metric}%
+\input{../tikz/RBF/pm25/joint_plot_-1.0.tikz}
+&
+\renewcommand{\labely}{\metric\ \ }%
+\input{../tikz/OU/pm25/joint_plot_-1.0.tikz}\\
+\renewcommand{\labely}{\metric\ }%
+\input{../tikz/RBF/pm25/joint_plot_0.0.tikz}
+&
+\renewcommand{\labely}{\metric\ \ }%
+\input{../tikz/OU/pm25/joint_plot_0.0.tikz}\\
+\renewcommand{\labely}{\metric\ \ }%
+\input{../tikz/RBF/pm25/joint_plot_1.0.tikz}
+&
+\renewcommand{\labely}{\metric\ \ }%
+\input{../tikz/OU/pm25/joint_plot_1.0.tikz}\\
+\renewcommand{\labely}{\metric\ \ }%
+\input{../tikz/RBF/pm25/joint_plot_2.0.tikz}
+&
+\renewcommand{\labely}{\metric\ \ }%
+\input{../tikz/OU/pm25/joint_plot_2.0.tikz}
+\end{tabular}
+\caption{
+	\captionText{\PM}
+}
+\end{figure}
+
+\begin{figure}
+	{\centering\ref{leg:performance}\\}
+	\setlength{\tabcolsep}{-4pt}
+	\begin{tabular}{rr}
+		\multicolumn{1}{c}{RBF \cref{eq:kernel_rbf}}&\multicolumn{1}{c}{OU \cref{eq:kernel_ou}}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/protein/joint_plot_-1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/protein/joint_plot_-1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/protein/joint_plot_0.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/protein/joint_plot_0.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/protein/joint_plot_1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/protein/joint_plot_1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/protein/joint_plot_2.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/protein/joint_plot_2.0.tikz}
+	\end{tabular}
+	\caption{
+		\captionText{\PROTEIN}
+	}
+	\label{fig:results_time_protein}
+\end{figure}
+
+\begin{figure}%[p!]
+	%\begin{flushleft}
+		{\centering\ref{leg:performance}\\}
+	%\end{flushleft}
+	\setlength{\tabcolsep}{-4pt}
+	\begin{tabular}{rr}
+		\multicolumn{1}{c}{RBF \cref{eq:kernel_rbf}}&\multicolumn{1}{c}{OU \cref{eq:kernel_ou}}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/tamilnadu_electricity/joint_plot_-1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/tamilnadu_electricity/joint_plot_-1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/tamilnadu_electricity/joint_plot_0.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/tamilnadu_electricity/joint_plot_0.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/tamilnadu_electricity/joint_plot_1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/tamilnadu_electricity/joint_plot_1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/tamilnadu_electricity/joint_plot_2.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/tamilnadu_electricity/joint_plot_2.0.tikz}
+	\end{tabular}
+	\caption{
+		\captionText{\TAMILNADU}
+	}
+	\label{fig:results_time_tamilnadu_electricity}
+\end{figure}
+
+\begin{figure}%[p!]
+	%\begin{flushleft}
+		{\centering\ref{leg:performance}\\}
+	%\end{flushleft}
+	\setlength{\tabcolsep}{-4pt}
+	\begin{tabular}{rr}
+		\multicolumn{1}{c}{RBF \cref{eq:kernel_rbf}}&\multicolumn{1}{c}{OU \cref{eq:kernel_ou}}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/bank/joint_plot_-1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/bank/joint_plot_-1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/bank/joint_plot_0.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/bank/joint_plot_0.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/bank/joint_plot_1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/bank/joint_plot_1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/bank/joint_plot_2.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/bank/joint_plot_2.0.tikz}
+	\end{tabular}
+	\caption{
+		\captionText{\BANK}
+	}
+	\label{fig:results_time_bank}
+\end{figure}
+
+\begin{figure}%[p!]
+	%\begin{flushleft}
+		{\centering\ref{leg:performance}\\}
+	%\end{flushleft}
+	\setlength{\tabcolsep}{-4pt}
+	\begin{tabular}{rr}
+		\multicolumn{1}{c}{RBF \cref{eq:kernel_rbf}}&\multicolumn{1}{c}{OU \cref{eq:kernel_ou}}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/metro/joint_plot_-1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/metro/joint_plot_-1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/metro/joint_plot_0.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/metro/joint_plot_0.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/metro/joint_plot_1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/metro/joint_plot_1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/metro/joint_plot_2.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/metro/joint_plot_2.0.tikz}
+	\end{tabular}
+	\caption{
+		\captionText{\METRO}
+	}
+	\label{fig:results_time_metro}
+\end{figure}
+
+\begin{figure}%[p!]
+	%\begin{flushleft}
+		{\centering\ref{leg:performance}\\}
+	%\end{flushleft}
+	\setlength{\tabcolsep}{-4pt}
+	\begin{tabular}{rr}
+		\multicolumn{1}{c}{RBF \cref{eq:kernel_rbf}}&\multicolumn{1}{c}{OU \cref{eq:kernel_ou}}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/pumadyn/joint_plot_-1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/pumadyn/joint_plot_-1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/pumadyn/joint_plot_0.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/pumadyn/joint_plot_0.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/pumadyn/joint_plot_1.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/pumadyn/joint_plot_1.0.tikz}\\
+		\renewcommand{\labely}{\metric}%
+		\input{../tikz/RBF/pumadyn/joint_plot_2.0.tikz}
+		&
+		%\renewcommand{\labely}{~}
+		\input{../tikz/OU/pumadyn/joint_plot_2.0.tikz}
+	\end{tabular}
+	\caption{
+		\captionText{\PUMADYN}
+	}
+	\label{fig:results_time_pumadyn}
+\end{figure}
+
+\begin{figure}
+	\renewcommand{\arraystretch}{0.0}%
+	%\setlength\extrarowheight{-3pt}
+	\setlength{\figwidth}{.5\textwidth}%
+	\setlength{\figheight}{.15\textheight}%
+	\renewcommand{\expconfig}[3]{#3}%
+	\renewcommand{\ticklabelsx}{false}%
+	\renewcommand{\labelx}{~}%
+	\begin{tabular}{ll}
+		\renewcommand{\ticklabelsy}{true}%
+		\renewcommand{\labely}{$r$}%
+		\input{../tikz/ste_bank_rbf.tikz}%
+		&
+		\renewcommand{\ticklabelsy}{false}%
+		\renewcommand{\labely}{~}%
+		\input{../tikz/ste_metro_rbf.tikz}%
+		\\[-10pt]
+		\renewcommand{\ticklabelsy}{true}%
+		\renewcommand{\labely}{$r$}%
+		\input{../tikz/ste_pm25_rbf.tikz}%
+		&
+		\renewcommand{\ticklabelsy}{false}%
+		\renewcommand{\labely}{~}%
+		\input{../tikz/ste_protein_rbf.tikz}%
+		\\[-10pt]
+		\renewcommand{\ticklabelsy}{true}%
+		\renewcommand{\labely}{$r$}%
+		\renewcommand{\ticklabelsx}{true}%
+		\renewcommand{\labelx}{$\log(\ell)$}%
+		\input{../tikz/ste_tamilnadu_electricity_rbf.tikz}%
+		&
+		\renewcommand{\ticklabelsy}{false}%
+		\renewcommand{\labely}{~}%
+		\renewcommand{\ticklabelsx}{true}%
+		\renewcommand{\labelx}{$\log(\ell)$}%
+		\input{../tikz/ste_pumadyn_rbf.tikz}%
+	\end{tabular}
+\end{figure}
+\end{document}

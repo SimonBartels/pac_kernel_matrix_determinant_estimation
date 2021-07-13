@@ -1,0 +1,91 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figheight,
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figwidth,
+x grid style={white!69.0196078431373!black},
+xlabel={\labelx{}},
+xmin=0.85, xmax=4.15,
+xtick style={color=black},
+xtick={1,2,3,4},
+xticklabel style = {align=center},
+xticklabels={
+  \expconfig{\TAMILNADU{}}{RBF}{-1.0},
+  \expconfig{\TAMILNADU{}}{RBF}{0.0},
+  \expconfig{\TAMILNADU{}}{RBF}{1.0},
+  \expconfig{\TAMILNADU{}}{RBF}{2.0}
+},
+y grid style={white!69.0196078431373!black},
+ylabel={\labely{}},
+ymajorticks={\ticklabelsy},
+xmajorticks={\ticklabelsx},
+ymin=0.001, ymax=1,
+ymode=log,
+ytick style={color=black}
+]
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.224042907357216
+1 0.229373693466187
+1 0.230486944317818
+1 0.225757151842117
+1 0.223120868206024
+1 0.228187888860703
+1 0.228684112429619
+1 0.229083567857742
+1 0.231617942452431
+1 0.231234952807426
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+2 0.184376761317253
+2 0.185489922761917
+2 0.190204724669456
+2 0.184170290827751
+2 0.185912132263184
+2 0.184754744172096
+2 0.191276341676712
+2 0.188463523983955
+2 0.188195899128914
+2 0.191122204065323
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+3 0.107324652373791
+3 0.102109462022781
+3 0.104970701038837
+3 0.100133575499058
+3 0.0995044633746147
+3 0.104003794491291
+3 0.0974975600838661
+3 0.107004173099995
+3 0.108461998403072
+3 0.10108408331871
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+4 0.028275964781642
+4 0.0260792262852192
+4 0.0270761046558619
+4 0.0290554594248533
+4 0.0276542399078608
+4 0.0297424178570509
+4 0.0294948369264603
+4 0.0292859971523285
+4 0.0306398663669825
+4 0.0289078447967768
+};
+\draw (axis cs:1,0.005) node[
+  scale=0.5,
+  anchor=south west,
+  text=black,
+  rotate=0.0
+]{\TAMILNADU{}};
+\clearlegend{};
+\end{axis}
+
+\end{tikzpicture}

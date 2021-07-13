@@ -1,0 +1,472 @@
+% insights on package conflicts:
+% cleveref should be loaded in the end
+% autonum even later
+% seems like thm-restate and autonum do not like each other => do not use align in restatable theorems
+% ntheorem must come before any theorem declarations
+
+
+
+\usepackage{microtype,marvosym} 
+\usepackage{stmaryrd} % for \sslash 
+\usepackage{amsmath,amssymb,graphicx}
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{url}
+%\usepackage{subcaption} % for subfigures
+%\usepackage{amsthm} 
+%\newtheorem{prop}{Proposition}
+%\newtheorem*{thm*}{Theorem}
+%\newtheorem*{corollary*}{Corollary}
+
+\usepackage{afterpage}
+\usepackage{nameref}
+\usepackage{adjustbox}
+
+% For use with matlab2tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+% \pgfplotsset{compat=1.15}
+%\usetikzlibrary{external}
+
+\pgfplotsset{
+	every axis legend/.append style =
+	{
+		cells = { anchor = east },
+		draw  = none
+	},
+}  
+\makeatletter
+\pgfplotsset{ 
+	range frame/.style={
+		tick align = outside,
+		axis line style={opacity=0},
+		after end axis/.code={
+			\draw ({rel axis cs:0,0}-|{axis cs:\pgfplots@data@xmin,0}) -- ({rel axis cs:0,0}-|{axis cs:\pgfplots@data@xmax,0});
+			\draw ({rel axis cs:0,0}|-{axis cs:0,\pgfplots@data@ymin}) -- ({rel axis cs:0,0}|-{axis cs:0,\pgfplots@data@ymax});
+		}
+	}
+}
+\makeatother
+
+\pgfkeys{/pgfplots/mytuftestyle/.style={
+		semithick,
+		tick style={major tick length=4pt,semithick,black},
+		separate axis lines,
+		axis x line*=bottom,
+		axis x line shift=5pt,
+		xlabel shift=0pt,
+		axis y line*=left,
+		tick align = outside,
+		axis y line shift=5pt,
+		ylabel shift=0pt}}
+
+%\usetikzlibrary{external}
+\usepgfplotslibrary{external} 
+\tikzsetexternalprefix{tikz_out/}
+\tikzexternalize[mode=list and make]
+% TIKZ
+\usetikzlibrary{plotmarks}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{plot coordinates/math parser=false}       
+\pgfkeys{/pgfplots/mystyle/.style={
+		semithick,
+		tick style={major tick length=4pt,semithick,gray},
+		xtick align = inside,
+		ytick align = inside,
+		xlabel near ticks,
+		ylabel near ticks,
+		%every y tick scale label/.style={at={(rel axis cs:0,1)},anchor=south west,inner sep=1pt} % move scaling factors to the left of the plot
+		%mark size = 0pt
+%		every axis x label/.style={
+%			at={(ticklabel cs:-0.1, -10)},anchor=near ticklabel
+%		}
+}}
+\pgfkeys{/pgfplots/resultfigstyle/.style={
+		semithick,
+		tick style={major tick length=4pt,semithick,gray},
+		xtick align = inside,
+		xticklabel style = {align=center},
+		ytick align = inside,
+		xlabel near ticks,
+		ylabel near ticks,
+		every axis x label/.style={
+				at={(ticklabel cs:-0.075, -25)},anchor=near ticklabel
+			},
+		every axis y label/.style={
+				at={(ticklabel cs:1, -25)},anchor=near ticklabel
+		},
+		every tick label/.append style={font=\tiny}		
+}}
+
+% Check out version 30, if this trick fails ...
+\newlength\figureheight
+\newlength\figurewidth
+\newlength\figheight
+\newlength\figwidth
+
+
+
+\usepackage{natbib}
+\newcommand{\textcite}{\citet}
+\newcommand{\parencite}{\citep}
+
+\definecolor{lred}{RGB}{200,0,0}
+\definecolor{dred}{RGB}{130,0,0} \definecolor{dblu}{RGB}{0,0,130}
+\definecolor{dgre}{RGB}{0,130,0} \definecolor{dgra}{RGB}{50,50,50}
+\definecolor{mgra}{RGB}{100,100,100}
+\definecolor{lgra}{RGB}{220,220,220}
+\definecolor{MPG}{RGB}{000,125,122}
+\definecolor{mpg}{RGB}{000,125,122}
+\definecolor{ora}{HTML}{FF9933}
+\definecolor{newcode}{RGB}{220,220,220}
+
+
+\definecolor{AMPurple}{HTML}{663366}
+\definecolor{Burgundy}{HTML}{993333}
+\definecolor{Coffee}{HTML}{7B6049}
+\definecolor{ForestGreen}{HTML}{005826}
+\definecolor{Lavender}{HTML}{6E6AB1}
+\definecolor{PSLightBlue}{HTML}{7DA7D9}
+
+\newcommand{\mpg}[1]{{\color{MPG} #1}}  
+\newcommand{\gra}[1]{{\color{mgra} #1}}  
+\newcommand{\dre}[1]{{\color{dred} #1}}  
+\newcommand{\ora}[1]{{\color{ora} #1}}   
+\newcommand{\blu}[1]{{\color{dblu} #1}}  
+
+\usepackage{booktabs}
+
+\newcommand{\g}{\,|\,} 
+\newcommand{\de}{\partial}
+\renewcommand{\d}{\:d} 
+\newcommand{\eps}{\epsilon}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ddd}{\mathsf{d}}
+\newcommand{\DD}{\mathsf{D}}
+\newcommand{\Exp}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}}
+\newcommand{\Ent}{\mathbb{H}}
+\newcommand{\Cov}{\operatorname{cov}} 
+\newcommand{\cov}{\operatorname{cov}} 
+\newcommand{\erf}{\operatorname{erf}} 
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\K}{\mathcal{K}} 
+\newcommand{\KL}{\text{KL}} 
+\renewcommand{\Re}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\const}{\text{const.}}
+\newcommand{\diag}[1]{\operatorname{diag}\left[#1\right]}
+\newcommand{\Dcal}{\mathcal{D}} 
+\newcommand{\N}{\mathcal{N}} 
+\newcommand{\W}{\mathcal{W}} 
+\newcommand{\cS}{\mathcal{S}} 
+\newcommand{\sT}{\mathsf{T}} 
+\newcommand{\B}{\mathcal{B}} 
+\renewcommand{\C}{\mathcal{C}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\Trans}{^{\intercal}} 
+\newcommand{\iTrans}{^{-\intercal}} 
+\newcommand{\pTrans}{^{+\intercal}} 
+\newcommand{\argmin}{\operatorname*{arg\:min}}
+\newcommand{\argmax}{\operatorname*{arg\:max}}
+\newcommand{\arginf}{\operatorname*{arg\:inf}}
+\newcommand{\argsup}{\operatorname*{arg\:sup}}
+\renewcommand{\det}{\operatorname{det}}
+\newcommand{\var}{\operatorname{var}}
+\renewcommand{\=}{\operatorname*{=}}
+\newcommand{\myexp}[1]{\exp{\left[ #1 \right] }}
+\newcommand{\expmap}{\mathrm{Exp}}
+\newcommand{\logmap}{\mathrm{Log}}
+
+%\newcommand{\ostimes}{\otimes\hspace{-2.30046mm}-}
+%\newcommand{\ostimes}{\otimes\hspace{-0.64031em}-}
+
+% \usepackage{stackengine}
+\newcommand{\ostimes}{\circledast}
+
+% %%% all this just to load one document from MnSymbol. See also "FindSymbol.tex".
+% \DeclareFontFamily{U} {MnSymbolC}{}
+% \DeclareFontShape{U}{MnSymbolC}{m}{n}{
+%   <-6> MnSymbolC5
+%   <6-7> MnSymbolC6
+%   <7-8> MnSymbolC7
+%   <8-9> MnSymbolC8
+%   <9-10> MnSymbolC9
+%   <10-12> MnSymbolC10
+%   <12-> MnSymbolC12}{}
+% \DeclareFontShape{U}{MnSymbolC}{b}{n}{
+%   <-6> MnSymbolC-Bold5
+%   <6-7> MnSymbolC-Bold6
+%   <7-8> MnSymbolC-Bold7
+%   <8-9> MnSymbolC-Bold8
+%   <9-10> MnSymbolC-Bold9
+%   <10-12> MnSymbolC-Bold10
+%   <12-> MnSymbolC-Bold12}{}
+
+% \DeclareSymbolFont{MnSyC} {U} {MnSymbolC}{m}{n}
+
+% \DeclareMathSymbol{\boxslash}{\mathrel}{MnSyC}{114}
+% \DeclareMathSymbol{\boxbackslash}{\mathrel}{MnSyC}{115}
+
+\newcommand{\utr}{\boxbackslash}
+\newcommand{\ltr}{\boxslash}
+\newcommand{\oodot}{\circledcirc}
+
+\newcommand{\hl}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\q}{\quad}
+\newcommand{\qq}{\qquad}
+\newcommand{\qqq}{\quad\qquad}
+\newcommand{\qqqq}{\qquad\qquad}
+
+\renewcommand{\vec}{\boldsymbol} 
+\newcommand{\mat}{\boldsymbol} 
+\newcommand{\inv}[1]{{#1}^{-\!1}}
+\newcommand{\trace}{\operatorname{trace}}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\vest}[1]{\overrightharpoon{#1}}
+\newcommand{\fun}[1]{\mathsf{#1}}
+\newcommand{\logm}{\operatorname{Log}}
+\newcommand{\expm}{\operatorname{Exp}}
+\renewcommand{\O}{\mathcal{O}} 
+\renewcommand{\G}{\mathcal{G}} 
+\newcommand{\GP}{\mathcal{GP}}
+\newcommand{\Id}{\vec{I}}
+\newcommand{\zero}{\vec{0}}
+\newcommand{\tr}[1]{\operatorname{tr}\left[#1\right]}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\II}{\mathbb{I}}
+\renewcommand{\L}{\mathcal{L}}
+
+\newcommand{\bm}{\boldsymbol{m}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\bPhi}{\boldsymbol{\Phi}}
+\newcommand{\bphi}{\boldsymbol{\phi}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+
+\newcommand{\w}{\vec{w}}
+\newcommand{\f}{\vec{f}}
+\newcommand{\y}{\vec{y}}
+\newcommand{\x}{\vec{x}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\X}{\mathbb{X}}
+
+\newcommand{\fS}{\mathsf{S}}
+\newcommand{\fW}{\mathsf{W}}
+\newcommand{\fB}{\mathsf{B}}
+\newcommand{\fK}{\mathsf{K}}
+\newcommand{\fH}{\mathsf{H}}
+\newcommand{\fk}{\mathsf{k}}
+\newcommand{\fh}{\mathsf{h}}
+\newcommand{\fL}{\mathsf{L}}
+
+\newcommand{\sA}{\boldsymbol{\mathsf{A}}}
+\newcommand{\sB}{\boldsymbol{\mathsf{B}}}
+\newcommand{\sC}{\boldsymbol{\mathsf{C}}}
+
+\usepackage{colonequals}
+\newcommand{\ce}{\colonequals}
+\newcommand{\ec}{\equalscolon}
+
+\usepackage{nicefrac}
+
+\newcommand{\braket}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\brakets}[3]{\left\langle #1 \, \middle| \, #2 \, \middle|\, #3 \right\rangle}
+
+\usetikzlibrary{arrows,shapes,plotmarks}
+
+\tikzset{>=stealth'} 
+\tikzstyle{graphnode} = 
+[circle,draw=black,minimum size=22pt,text centered,text
+width=22pt,inner sep=0pt] 
+\tikzstyle{var}   =[graphnode,fill=white]
+\tikzstyle{obs}   =[graphnode,fill=black,text=white]
+\tikzstyle{fac}   =[rectangle,draw=black,fill=black!25,minimum size=5pt]
+\tikzstyle{facprior} =[rectangle,draw=black,fill=black,text=white,minimum size=5pt]
+\tikzstyle{edge}  =[draw=white,double=black,thick,-]
+\tikzstyle{prior} =[rectangle, draw=black, fill=black, minimum size=
+5pt, inner sep=0pt]
+\tikzstyle{dirprior} = [circle, draw=black, fill=black, minimum
+size=5pt, inner sep=0pt]
+
+% to avoid warnings, copy only two symbols from stmaryrd
+\DeclareSymbolFont{stmry}{U}{stmry}{m}{n}
+\DeclareMathSymbol\leftarrowtriangle\mathrel{stmry}{"5E}
+\DeclareMathSymbol\rightarrowtriangle\mathrel{stmry}{"5F}
+\renewcommand{\gets}{\operatorname*{\leftarrowtriangle}}
+\renewcommand{\to}{\operatorname*{\rightarrowtriangle}}
+
+
+\newcounter{PHcomment}
+\newcommand{\PHcomment}[1]{%
+	%note in the margin
+	\refstepcounter{PHcomment}%
+	{%
+		%\setstretch{0.7}% spacing
+		\todo[inline,color={MPG!20},size=\small]{%
+			\textbf{Comment [PH \thePHcomment]:}~#1}%
+}}
+
+%\usepackage{tensor}
+%% Left and right kernel derivatives
+%\newcommand{\dk}{\tensor[^{\de}]{k}{}}
+%\newcommand{\ddk}{\tensor[^{\de^2}]{k}{}}
+%\newcommand{\ddkd}{\tensor[^{\de^2}]{k}{^{\de}}}
+%\newcommand{\dddk}{\tensor[^{\de^3}]{k}{}}
+%\newcommand{\dddkd}{\tensor[^{\de^3}]{k}{^{\de}}}
+%\newcommand{\kd}{\tensor{k}{^{\de}}}
+%\newcommand{\dkd}{\tensor[^{\de}]{k}{^{\de}}}
+%\newcommand{\dy}{y^{\de}}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+%\algrenewcommand{\algorithmiccomment}[1]{{\footnotesize \hfill$\rhd$ #1}}
+
+%\usepackage[pdftex]{hyperref}
+
+% Packages hyperref and algorithmic misbehave sometimes.  We can fix
+% this with the following command.
+%\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Kronecker symbols
+\makeatletter
+\newcommand{\superimpose}[2]{%s
+	{\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+\newcommand{\sk}{\mathpalette\superimpose{{\otimes}{\ominus}}}
+% \newcommand{\sk}{\circledast}
+\newcommand{\kr}{\otimes}
+\newcommand{\vecm}[1]{\operatorname{vec}\left(#1\right)} % vectorized matrix
+\newcommand{\vecmtrans}[1]{\vecm{#1}\Trans} % vectorized matrix transposed (i.e. the vector -- not the matrix)
+\newcommand{\tomat}[1]{\operatorname{mat}\left(#1\right)} % transform vector to matrix
+
+\newcommand{\deriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\stack}[2]{\begin{bmatrix}
+		#1 \\ #2
+\end{bmatrix}}
+\newcommand{\concat}[2]{\begin{bmatrix}
+		#1 & #2
+\end{bmatrix}}
+
+\usepackage{epigraph}
+\usepackage{amsfonts}
+\usepackage{mdframed}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\eqcomment}[1]{\\*&\qquad(\text{{\small\emph{#1}}})\notag}
+
+\newcommand{\norm}[1]{\|#1\|}
+
+
+\newcommand{\pname}[1]{\emph{#1}} % style for proper names
+\newcommand{\latin}[1]{\emph{#1}} % style for latin phrases
+\newcommand{\adhoc}{\latin{ad hoc}}
+\newcommand{\ie}{\latin{i.e.~}}
+\newcommand{\eg}{\latin{e.g.~}}
+\newcommand{\cf}{\latin{c.f.~}}
+
+\renewcommand{\Re}{\mathbb{R}}
+\newcommand{\reals}{\Re}
+\newcommand{\sign}{\operatorname{sign}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} % absolute value
+\newcommand{\card}[1]{\# #1}% cardinality of a set
+\newcommand{\smallabs}[1]{\lvert#1\rvert}
+\renewcommand{\det}[1]{\mathrm{det}\left(#1\right)}% determinant
+\newcommand{\pn}[1]{}
+\newcommand{\Proba}{\mathbb{P}}
+\newcommand{\proba}[1]{\Proba\left (#1\right )}% probability of an event
+\newcommand{\marginnote}[1]{}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\integr}[1][\ ]{\int\limits_{#1} \! }
+\newcommand{\dx}[1]{\mathrm{d}#1}
+
+
+\renewcommand{\l}[1]{f_{#1}} %
+\newcommand{\lBound}{C} % upper bound for \l{}_j-\Exp[\tilde{}_j\mid x_1, ..., x_{j-1}]
+\newcommand{\me}[1][\tau]{\hat{\mu}_{#1}} % population mean estimate
+\newcommand{\lDetn}[1]{D_{#1}} % log-determinant until of K_n
+\newcommand{\Dhat}{\hat{D}_N} % the estimator for the log-determinant
+\newcommand{\kj}[1][j]{\vec k_{#1}(\vec x)} % k_j(x) = [k(x, x_1), ..., k(x, x_j)]\Trans
+\newcommand{\kjx}[2]{\vec k_{#1}(\vec #2)} % k_j(x) = [k(x, x_1), ..., k(x, x_j)]\Trans
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\U}{\mathcal{U}}
+\newcommand{\stopTimeOne}{\sign(\U_n)=\sign(\L_n)\neq 0}
+\newcommand{\stopTimeTwo}{\frac{\U_n-\L_n}{2\min(\abs{\U_n}, \abs{\L_n})} \leq r}
+
+
+\newcommand{\diff}{\est}
+\newcommand{\splitL}{\sum_{j=\tau+1}^N l_j-\diff}
+\newcommand{\splitR}{\epsilon_\tau}
+\newcommand{\uBound}{\splitR}
+
+
+\makeatletter
+\def\th@plain{%
+	\thm@notefont{}% same as heading font
+	\itshape % body font
+}
+\def\th@definition{%
+	\thm@notefont{}% same as heading font
+	\normalfont % body font
+}
+\makeatother
+
+% letter for performance metric
+\newcommand{\metric}{m}
+
+% commands used in the tikz files
+\newcommand{\expconfig}[3]{#3}
+\newcommand{\labely}{$\nicefrac{\U_n-\L_n}{2\min(\abs{\U_n}, \abs{\L_n})}$}
+\newcommand{\labelx}{~}
+\newcommand{\labelxu}{$d$}
+\newcommand{\labelyu}{$m$}
+\newcommand{\ticklabelsx}{true}
+\newcommand{\ticklabelsy}{true}
+\newcommand{\METRO}{METRO}
+\newcommand{\PM}{PM2.5}
+\newcommand{\TAMILNADU}{TAMILNADU}
+\newcommand{\PROTEIN}{PROTEIN}
+\newcommand{\BANK}{BANK}
+\newcommand{\PUMADYN}{PUMADYN}
+\newcommand{\overhead}{$5\%$ overhead}
+\newcommand{\DefaultChol}{default$\quad$}
+\newcommand{\StoppedChol}{probabilistic$\quad$}
+\newcommand{\PivotedChol}{pivoting$\quad$}
+\newcommand{\DiagonalPrecision}{diagonal precision$\quad$}
+%\newcommand{\meantime}[1]{\textbf{\large default Cholesky mean time: #1 s}}
+\newcommand{\meantime}[1]{\colorbox{white}{\textbf{\large mean time default Cholesky: #1 s}}}
+\newcommand{\clearlegend}{}
+\newcommand{\showlegend}{\renewcommand{\clearlegend}{}}
+\newcommand{\hidelegend}{\renewcommand{\clearlegend}{\legend{}}}
+% \runinfo: dataset, D, N, k, \theta, \ell, \delta 
+\newcommand{\runinfo}[7]{$\ell=#6$}
+
+% commands used in the tables
+\newcommand{\transform}[1]{$\exp(#1)$}
+\newcommand{\captionTransform}[1]{#1}
+
+\newcommand{\augmentedStatement}[1]{\colorbox{newcode}{{#1}}}
+\newcommand{\AState}[1]{\State \augmentedStatement{#1}} % additional state
+%\newcommand{\AState}[1]{\State{#1}\hfill\COMMENT{\colorbox{dred}{NEW}}}
+\newcommand{\indk}{j}
+\newcommand{\indj}{k}
+\newcommand{\indi}{i}
+
+% caption text for the timing result figures
+\newcommand{\captionText}[1]{
+	relative execution times to compute the log-determinant using RBF (\textbf{left panel}) and OU (\textbf{right panel}) kernels on the #1 dataset for $\theta=1$, $\log\ell=-1, \dots, 3$ and $\delta=0.1$ for ten repetitions.
+	The number next to one on the $y$-axis displays the absolute execution times of the default Cholesky.
+	The solid, horizontal, orange line (\ref{leg:overhead}) visualizes the $105\%$ mark.
+	The $x$-axis displays a desired absolute precision on the diagonal elements $d$ (top) and the average corresponding desired relative precision~$r$ (bottom) on the log-determinant.
+}%
+
+% seems for the following packages this is the best place: at the end of the preamble
+\usepackage[capitalize]{cleveref} % MUST come after thm-restate but before theorem declarations
+% it appears autonum must be loaded AFTER cleverref
+\usepackage{autonum} % hide equation numbers if they are not referenced, disables equation* environments

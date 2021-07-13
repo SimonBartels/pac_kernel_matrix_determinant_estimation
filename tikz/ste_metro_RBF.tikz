@@ -1,0 +1,91 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figheight,
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figwidth,
+x grid style={white!69.0196078431373!black},
+xlabel={\labelx{}},
+xmin=0.85, xmax=4.15,
+xtick style={color=black},
+xtick={1,2,3,4},
+xticklabel style = {align=center},
+xticklabels={
+  \expconfig{\METRO{}}{RBF}{-1.0},
+  \expconfig{\METRO{}}{RBF}{0.0},
+  \expconfig{\METRO{}}{RBF}{1.0},
+  \expconfig{\METRO{}}{RBF}{2.0}
+},
+y grid style={white!69.0196078431373!black},
+ylabel={\labely{}},
+ymajorticks={\ticklabelsy},
+xmajorticks={\ticklabelsx},
+ymin=0.001, ymax=1,
+ymode=log,
+ytick style={color=black}
+]
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+1 0.402946919202805
+1 0.395593166351318
+1 0.39783039689064
+1 0.406205058097839
+1 0.399412661790848
+1 0.4000084400177
+1 0.396551191806793
+1 0.39807254076004
+1 0.40230119228363
+1 0.407940357923508
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+2 0.357483148574829
+2 0.364592611789703
+2 0.349680453538895
+2 0.354457855224609
+2 0.356783598661423
+2 0.350332796573639
+2 0.353291451931
+2 0.362074017524719
+2 0.353092908859253
+2 0.357314497232437
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+3 0.273099273443222
+3 0.268642008304596
+3 0.273964822292328
+3 0.262916684150696
+3 0.276175558567047
+3 0.286438792943954
+3 0.259736031293869
+3 0.285254806280136
+3 0.290106564760208
+3 0.261831730604172
+};
+\addplot [semithick, gray, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+4 0.118652053177357
+4 0.128218948841095
+4 0.120169870555401
+4 0.12049151211977
+4 0.1138716340065
+4 0.132135048508644
+4 0.122236289083958
+4 0.134913876652718
+4 0.149087563157082
+4 0.117477610707283
+};
+\draw (axis cs:1,0.005) node[
+  scale=0.5,
+  anchor=south west,
+  text=black,
+  rotate=0.0
+]{\METRO{}};
+\clearlegend{};
+\end{axis}
+
+\end{tikzpicture}
