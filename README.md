@@ -1,4 +1,5 @@
 # Kernel-Matrix Determinant Estimation from stopped Cholesky Decomposition
+This is the code repository for the JMLR submission of the same name ([pdf]).
 ## Requirements
 This software has been tested unter Ubuntu 18.04 using Python 3.8.
 
@@ -84,3 +85,4 @@ cat diagonals_part* > diagonals.zip
 Then extract ``diagonals.zip`` and ``mlruns.zip`` in the folder ``results``.
 
 [1] https://slurm.schedmd.com
+[pdf]: ./blob/master/Kernel-Matrix_Determinant_Estimates_from_stopped_Cholesky_Decomposition.pdf
