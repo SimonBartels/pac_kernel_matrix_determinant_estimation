@@ -1,5 +1,5 @@
-# Kernel-Matrix Determinant Estimation from stopped Cholesky Decomposition
-This is the code repository for the JMLR submission of the same name [(pdf)](./Kernel-Matrix_Determinant_Estimates_from_stopped_Cholesky_Decomposition.pdf).
+# [Kernel-Matrix Determinant Estimation from stopped Cholesky Decomposition](https://jmlr.org/papers/v24/21-0781.html)
+This is the code repository for the JMLR article of the same name [(pdf)](https://jmlr.org/papers/volume24/21-0781/21-0781.pdf).
 ## Requirements
 This software has been tested unter Ubuntu 18.04 using Python 3.8.
 
